@@ -69,15 +69,15 @@ mod tests {
             };
             command.args(args);
             // this makes it easy to debug issues, consider using --nocapture to get output with test
-            // command
-            //     .stderr(std::process::Stdio::inherit())
-            //     .stdout(std::process::Stdio::inherit());
-            // use itertools::Itertools;
-            // println!(
-            //     "{} {}",
-            //     command.get_program().to_string_lossy(),
-            //     command.get_args().map(|s| s.to_string_lossy()).join(" ")
-            // );
+            command
+                .stderr(std::process::Stdio::inherit())
+                .stdout(std::process::Stdio::inherit());
+            use itertools::Itertools;
+            println!(
+                "{} {}",
+                command.get_program().to_string_lossy(),
+                command.get_args().map(|s| s.to_string_lossy()).join(" ")
+            );
             command.output()
         }
     }
